@@ -1,59 +1,48 @@
-import java.util.*;
-public class swl
+import java.util.Scanner;
+public class primepal
 {
-    static int is_prime(int n)
+    public static boolean pal(int n)
     {
-        if(n==1)
+        int rev=0,temp;
+        temp=n;
+        while(temp!=0)
         {
-            return 0;
+            int d=temp%10;
+            rev=rev*10+d;
+            temp/=10;
         }
+        if(rev==n)
+        return true;
         else
-        {
-            for(int i=2;i<=Math.sqrt(n);i++)
-            {
-                if(n%i==0)
-                {
-                    return 0;
-                }
-            }
-            return 1;
-        }
+        return false;
     }
-    static int is_palindrome(int m)
+    public static boolean prime(int n)
     {
-        int a = m;
-        int s=0,b;
-        while(m!=0)
+        for(int i=2;i<=Math.sqrt(n);i++)
         {
-            b=m%10;
-            s=s*10+b;
-            m=m/10;
-        }
-        if(a==s)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    public static void main(String asd[])
-    {
-        Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        scan.close();
-        for(int i=n+1;i!=0;i++)
-        {
-            if(is_prime(i)==1)
+            if(n%i==0)
             {
-                if(is_palindrome(i)==1)
-                {
-                    System.out.print(i);
-                    break;
-                }
+                return false;
             }
         }
+        return true;
         
+    }
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n;
+        n=sc.nextInt();
+        for(int i=n+1;;i++)
+        {
+            if(pal(i)&&prime(i))
+            {
+            System.out.print(i);
+            break;
+            }
+            else
+            continue;
+            
+        }
     }
 }

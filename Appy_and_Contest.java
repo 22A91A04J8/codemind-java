@@ -1,39 +1,36 @@
-import java.util.Scanner;
-public class java
+import java.util.*;
+public class Solution
 {
+    public static int LCM(int m,int n)
+    {
+        int max=m>n?m:n;
+        int lcm=max;
+        while(true)
+        {
+            if(lcm%m==0 && lcm%n==0)
+                break;
+            
+            lcm=lcm+max;
+        }
+        return lcm;
+    }
     public static void main(String args[])
     {
-        int k;
         Scanner sc=new Scanner(System.in);
-        k=sc.nextInt();
-        for(int o=0;o<k;o++)
+        int t,A,B,K;
+        long N;
+        t=sc.nextInt();
+        while(t-- > 0)
         {
-            long n,a,b,l,i,c=0,m=0;
-            n=sc.nextLong();
-            a=sc.nextLong();
-            b=sc.nextLong();
-            l=sc.nextLong();
-            for(i=1;i<=n;i++)
-            {
-                if(i%a==0 && i%b!=0)
-                {
-                    c++;
-                }
-                else if(i%a!=0 && i%b==0)
-                {
-                    c++;
-                }
-            if(c>=l)
-            {
-                System.out.println("Win");
-                m=1;
-                break;
-            }
-            }
-            if(m==0)
-            {
-                System.out.println("Lose");
-            }
+            N=sc.nextLong();
+            A=sc.nextInt();
+            B=sc.nextInt();
+            K=sc.nextInt();
+            int count=(int)N/A + (int)N/B - (int)N/LCM(A,B);
+            if(count>=K)
+            System.out.println("Win");
+            else
+            System.out.println("Lose");
         }
     }
 }
